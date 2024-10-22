@@ -1,0 +1,18 @@
+{
+  "name": "refill-backend",
+  "version": "1.0.0",
+  "description": "Backend for my Prescription Refill Reminder App",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Ebadullah Siddiqi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.7.2",
+    "nodemon": "^3.1.7"
+  }
+}

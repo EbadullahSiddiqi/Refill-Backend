@@ -6,9 +6,14 @@ export async function userSignUp(req, res) {
     const { username, email, password } = req.body;
     const newUser = new User({ username, email, password });
     await newUser.save();
-    res.status(201).json({ message: "User created successfully" });
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "123456789h",
+    });
+    return res
+      .status(201)
+      .json({ message: "User created successfully", token: token });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 }
 
@@ -25,8 +30,8 @@ export async function userLogIn(req, res) {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "123456789h",
     });
-    res.json({ msg: "logged in", token: token });
+    return res.json({ msg: "logged in", token: token });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 }

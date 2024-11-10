@@ -4,7 +4,7 @@ export async function createPatient(req, res) {
   try {
     const { name, age, gender } = req.body;
     // Assuming you have the user's ID from authentication middleware
-    const userId = req.user._id;
+    const userId = req.user.id;
 
     const newPatient = new Patient({
       name,
@@ -23,7 +23,7 @@ export async function createPatient(req, res) {
 export async function showAllPatients(req, res) {
   try {
     // Only fetch patients created by the current user
-    const userId = req.user._id;
+    const userId = req.user.id;
     const allPatients = await Patient.find({ createdBy: userId });
 
     const html = `

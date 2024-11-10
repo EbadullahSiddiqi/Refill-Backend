@@ -23,9 +23,3 @@ app.use("/api/patient", authenticate, patientRouter);
 app.listen(port, () => {
   console.log(`Server running`);
 });
-
-/**
- 
-    gOusOud7HPoISgl2
-  
- */

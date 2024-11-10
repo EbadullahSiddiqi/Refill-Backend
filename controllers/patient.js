@@ -3,7 +3,7 @@ import Patient from "../models/patient.js";
 export async function createPatient(req, res) {
   try {
     const { name, age, gender } = req.body;
-    // Assuming you have the user's ID from authentication middleware
+    // We get the user's ID from authentication middleware
     const userId = req.user.id;
 
     const newPatient = new Patient({

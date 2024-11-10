@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 
 export async function getAllUsers(req, res) {
-  const allUsers = await User.find({});
+  const allUsers = await User.find({}); // Gets all the users from th database
   const html = `
     <ul>
       ${allUsers.map((user) => `<li>${user.username} - ${user.email}</li>`)}
@@ -9,16 +9,3 @@ export async function getAllUsers(req, res) {
     `;
   return res.send(html);
 }
-
-// export async function createNewUser(req, res) {
-//   if (req.body.name && req.body.email) {
-//     const newUser = await User.create({
-//       name: req.body.name,
-//       email: req.body.email,
-//     });
-//     console.log(newUser);
-//     return res.status(201).json({ msg: "success" });
-//   } else {
-//     return res.json({ msg: "Information Missing" });
-//   }
-// }
